@@ -34,14 +34,22 @@
                            if(isset($view)){
                             if( $view=="dashbord"){
                                 include('view/dashbord_view.php');
-                            }elseif( $view=="add_catagory"){
-                                include('view/add_catagory_view.php');
-                            }elseif( $view=="manage_catagory"){
-                                include('view/manage_catagory_view.php');
+                            }elseif( $view=="catagory"){
+                                include('view/catagory_view.php');
+                            }elseif( $view=="sub_catagory"){
+                                include('view/sub_catagory_view.php');
                             }elseif( $view=="add_post"){
                                 include('view/add_post_view.php');
                             }elseif( $view=="manage_post"){
                                 include('view/manage_post_view.php');
+                            }elseif( $view=="edit_catagory"){
+                                include('view/edit_catagory_view.php');
+                            }elseif( $view=="edit_sub_catagory"){
+                                include('view/edit_subcategory_view.php');
+                            }elseif( $view=="tag"){
+                                include('view/tag_view.php');
+                            }elseif( $view=="edit_tag"){
+                                include('view/edit_tag_view.php');
                             }
                            }
                        ?>

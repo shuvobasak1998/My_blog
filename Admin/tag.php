@@ -1,6 +1,7 @@
 <?php   
-    $view="manage_catagory";
+
+    $view="tag";
     include('template.php');
 
-
 ?>
+

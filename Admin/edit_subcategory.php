@@ -1,8 +1,6 @@
 <?php   
-
-    $view="manage_post";
+    $view="edit_sub_catagory";
     include('template.php');
 
 
 ?>
-

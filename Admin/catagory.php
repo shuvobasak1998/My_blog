@@ -1,8 +1,5 @@
 <?php   
-
-    $view="manage_post";
+    $view="catagory";
     include('template.php');
 
-
 ?>
-

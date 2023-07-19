@@ -1,6 +1,7 @@
 <?php   
-    $view="add_catagory";
+    $view="edit_tag";
     include('template.php');
+    
 
 
 ?>
