@@ -134,7 +134,7 @@
          return $sub_cat_info;
         }
  
-     }
+    }
 
      public function update_sub_cat($data){
         $u_cat_id=$data['catagory'];
@@ -198,15 +198,75 @@
         }
     }
 
+    public function add_post($data){
+        $post_title=isset($data['post_title'])? $data['post_title']: null;
+        $post_catagory=isset($data['post_catagory'])? $data['post_catagory']: null;
+        $post_sub_catagory=isset($data['post_sub_catagory'])? $data['post_sub_catagory']: null;
+        $post_content=isset($data['post_content'])? $data['post_content']: null;
+        $post_summery=isset($data['post_summery'])? $data['post_summery']: null;
+        $post_tag=isset($data['post_tag'])? $data['post_tag']: null;
+        $post_status=isset($data['post_status'])? $data['post_status']: null;
+        $meta_title=isset($data['meta_title'])? $data['meta_title']: null;
+        $post_img_name=isset($_FILES['post_img']['name'])? $_FILES['post_img']['name']: null;
+        $tmp_img_name=isset($_FILES['post_img']['tmp_name'])? $_FILES['post_img']['tmp_name']: null;
+        $img_path="Image/".$post_img_name;
+
+        if(move_uploaded_file($tmp_img_name,$img_path)){
+        
+           $query="INSERT INTO blog_post(category_id,sub_cat_id,post_title,post_details,post_status,thumba_img,create_at,update_at,meta_title,post_tag	) 
+                VALUES ($post_catagory,$post_sub_catagory,'$post_title','$post_content',$post_status,'$post_img_name',now(),now(),'$meta_title','$post_tag')";
+           $query_ran=mysqli_query($this->conn,$query);
+          if($query_ran){
+            return 'Post added Sucessfully!!';
+           }else{
+            return 'Post added failed!!';
+            
+            }
+        }
 
 
-   
-  
+    }
+
+    public function post_display(){
+        $query="SELECT * FROM blog_post";
+        if(mysqli_query($this->conn,$query)){
+         $post_select=mysqli_query($this->conn,$query);
+         return $post_select;
+        }
+        
+    }
+
+    public function delet_post($id){
+        $query="DELETE FROM blog_post WHERE post_id=$id";
+        if(mysqli_query($this->conn,$query)){
+         return "Delete post sucessfully..!!";
+        }
+
+    }
+
+    public function edit_post($id){
+        $query="SELECT * FROM blog_post WHERE post_id=$id";
+        if(mysqli_query($this->conn,$query)){
+         $post_data=mysqli_query($this->conn,$query);
+         $post_info=mysqli_fetch_assoc($post_data);
+         return $post_info;
+        }
+ 
+    }
+
+    public function post_sub_category($post_cat_id){
+        $query="SELECT * FROM subcategory WHERE cat_id=$post_cat_id";
+        if(mysqli_query($this->conn,$query)){
+         $post_sub_cat_query=mysqli_query($this->conn,$query);
+         return $post_sub_cat_query;
+        }
+ 
+    }
 
 
 
 
-}   
+}
 
 
 

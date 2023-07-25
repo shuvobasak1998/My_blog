@@ -20,9 +20,9 @@ if(isset($_POST['update_tag'])){
   <form action="" method="POST" >
   <div class="mb-3">
   <label for="tag_name" class="form-label">Name</label>
-  <input type="text" name="tag_name" class="form-control" value="<?php echo $rtn_tag['tage_name'];?>
-" required >
- </div>
+  <input type="text" name="tag_name" class="form-control" value="<?php echo $rtn_tag['tage_name'];?>" required> 
+
+</div>
  <div class="mb-3">
   <label for="tag_status" class="form-label">Tag Status</label>
   <select name="tag_status" class="form-control" id="tag_status">

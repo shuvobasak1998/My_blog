@@ -8,6 +8,7 @@
   if($id==null){
     header("location:index.php");
   }
+  
 
   if(isset($_GET['admin_logout'])){
     if($_GET['admin_logout']=='logout'){
@@ -20,6 +21,8 @@
 ?>
 
 <?php require 'includes/head.php';  ?>
+
+ 
 
     <body class="sb-nav-fixed">
     <?php require 'includes/topnav.php';  ?>
@@ -50,6 +53,8 @@
                                 include('view/tag_view.php');
                             }elseif( $view=="edit_tag"){
                                 include('view/edit_tag_view.php');
+                            }elseif( $view=="edit_post"){
+                                include('view/edit_post_view.php');
                             }
                            }
                        ?>
@@ -61,5 +66,40 @@
             </div>
         </div>
         <?php require 'includes/script.php';  ?> 
-    </body>
+
+
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+  $('#category-dropdown').on('change', function() {
+  var category_id = this.value;
+  console.log(category_id);
+  $.ajax({
+  url: "sub_category_dropdown.php",
+  type: "POST",
+  data: {
+  category_id: category_id
+  },
+  cache: false,
+  success: function(result){
+    console.log(result);
+  $("#sub-category-dropdown").html(result);
+  }
+  });
+  });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+</script>
+
+
+
+ </body>
 </html>
